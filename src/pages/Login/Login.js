@@ -1,3 +1,5 @@
-const Login = () => {};
+const Login = () => {
+  return <section>login</section>;
+};
 
 export default Login;
