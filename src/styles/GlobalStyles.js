@@ -6,7 +6,8 @@ const GlobalStyles = createGlobalStyle`
   *{
     box-sizing:border-box;
   }
-  body{
+  html,body{
+    height: 100%;
     font-family: 'Lobster', cursive;
     font-family: 'Noto Sans KR', sans-serif;
 
