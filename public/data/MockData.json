@@ -1,0 +1,86 @@
+[
+  {
+    "thumbnail_image": "https://cdn.pixabay.com/photo/2015/11/20/08/17/meat-1052571_1280.jpg",
+    "category_id": 1,
+    "name": "한식당",
+    "address": "서울시 강서구 공항동",
+    "close_time": true
+  },
+  {
+    "thumbnail_image": "https://cdn.pixabay.com/photo/2016/04/26/03/55/salmon-1353598_1280.jpg",
+    "category_id": 2,
+    "name": "일식당",
+    "address": "서울시 강남구 대치동",
+    "close_time": true
+  },
+  {
+    "thumbnail_image": "https://cdn.pixabay.com/photo/2018/12/04/15/18/chinese-3855823_1280.jpg",
+    "category_id": 3,
+    "name": "중식당",
+    "address": "서울시 강북구 강북동",
+    "close_time": true
+  },
+  {
+    "thumbnail_image": "https://cdn.pixabay.com/photo/2021/10/29/08/08/beef-noodle-soup-6751319_1280.jpg",
+    "category_id": 4,
+    "name": "쌀국수",
+    "address": "서울시 강동구 강일동",
+    "close_time": true
+  },
+  {
+    "thumbnail_image": "https://cdn.pixabay.com/photo/2022/03/12/14/02/steak-7064238_1280.jpg",
+    "category_id": 5,
+    "name": "양식",
+    "address": "서울시 성북구 성북동",
+    "close_time": true
+  },
+  {
+    "thumbnail_image": "https://cdn.pixabay.com/photo/2017/01/16/17/45/pancake-1984716_1280.jpg",
+    "category_id": 6,
+    "name": "디저트",
+    "address": "인천시 남동구 간석동",
+    "close_time": true
+  },
+  {
+    "thumbnail_image": "https://cdn.pixabay.com/photo/2016/11/15/09/46/korean-food-1825766_1280.jpg",
+    "category_id": 1,
+    "name": "백반집",
+    "address": "인천시 부평구 부평동",
+    "close_time": true
+  },
+  {
+    "thumbnail_image": "https://cdn.pixabay.com/photo/2016/10/23/09/31/japanese-food-1762478_1280.jpg",
+    "category_id": 2,
+    "name": "이자카야",
+    "address": "서울시 저기 어디에",
+    "close_time": true
+  },
+  {
+    "thumbnail_image": "https://cdn.pixabay.com/photo/2015/03/05/12/51/lamb-660327_1280.jpg",
+    "category_id": 3,
+    "name": "만리장성",
+    "address": "경기도 오산 이지",
+    "close_time": true
+  },
+  {
+    "thumbnail_image": "https://cdn.pixabay.com/photo/2016/02/26/05/24/vietnam-1223521_1280.jpg",
+    "category_id": 4,
+    "name": "미분당",
+    "address": "경기도 화성시 가즈아",
+    "close_time": true
+  },
+  {
+    "thumbnail_image": "https://cdn.pixabay.com/photo/2020/06/08/16/49/pizza-5275191_1280.jpg",
+    "category_id": 5,
+    "name": "핏제리아",
+    "address": "서울시 강남구 테헤란로",
+    "close_time": true
+  },
+  {
+    "thumbnail_image": "https://cdn.pixabay.com/photo/2017/03/13/12/34/coffee-2139592_1280.jpg",
+    "category_id": 6,
+    "name": "메머드커피",
+    "address": "부산시 해운대구 해운대",
+    "close_time": true
+  }
+]
