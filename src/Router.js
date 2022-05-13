@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer';
 import OAuth from './pages/OAuth/OAuth';
 import Reservations from './pages/Reservations/Reservations';
 import NotFound from './pages/NotFound';
+import MyPage from './pages/MyPage/MyPage';
 
 const Router = () => {
   return (
@@ -19,6 +20,7 @@ const Router = () => {
         <Route path="/oauth/kakao" element={<OAuth />} />
         <Route path="/book/:id" element={<Reservations />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/mypage" element={<MyPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

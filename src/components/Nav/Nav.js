@@ -12,7 +12,7 @@ const Nav = () => {
   const navigate = useNavigate();
 
   const goToCategoryHandler = () => {
-    navigate(`/category`);
+    navigate(`/list`);
   };
 
   const handleIsModalOn = () => {
@@ -60,7 +60,13 @@ const Nav = () => {
                 {userModal && (
                   <S.UserModalInfo>
                     <ul>
-                      <li>마이페이지</li>
+                      <li
+                        onClick={() => {
+                          navigate('/mypage');
+                        }}
+                      >
+                        마이페이지
+                      </li>
                       <hr />
                       <li onClick={handleLogOut}>로그아웃</li>
                     </ul>
