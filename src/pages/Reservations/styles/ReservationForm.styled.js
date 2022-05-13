@@ -7,8 +7,8 @@ export const ReservationFormDiv = styled.div`
 export const SectionWapper = styled.section`
   display: flex;
   margin: 5px 0px;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: space-between;
   font-size: 15px;
   height: 35px;
   width: 100%;
@@ -17,14 +17,6 @@ export const SectionWapper = styled.section`
 export const UserTitle = styled.span`
   margin: 0px 14px 0px 10px;
   font-weight: ${prop => prop.id === 'userDate' && 700};
-`;
-
-export const ToggleWapper = styled.section`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 5px 14px 5px 10px;
-  height: 35px;
 `;
 
 export const BtnDiv = styled.div`
@@ -37,10 +29,14 @@ export const BtnDiv = styled.div`
 export const Btn = styled.button`
   width: 70px;
   height: 30px;
-  border-radius: 5px;
-  border: none;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 15px;
+  font-weight: 600;
+
   :hover {
     cursor: pointer;
+    background-color: #eaeaea;
   }
 `;
 

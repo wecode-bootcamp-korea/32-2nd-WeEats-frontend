@@ -5,14 +5,14 @@ const Maps = ({ latitude, longitude }) => {
   useEffect(() => {
     const mapContainer = document.getElementById('map'),
       mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667),
+        center: new kakao.maps.LatLng(latitude, longitude),
         level: 3,
       };
 
     const map = new kakao.maps.Map(mapContainer, mapOption);
 
     let marker = new kakao.maps.Marker({
-      position: new kakao.maps.LatLng(33.450701, 126.570667),
+      position: new kakao.maps.LatLng(latitude, longitude),
     });
 
     marker.setMap(map);

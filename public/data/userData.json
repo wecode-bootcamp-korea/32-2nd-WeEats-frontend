@@ -1,0 +1,22 @@
+{
+  "user_info": {
+    "img": "",
+    "name": "디디"
+  },
+  "reservation_info": [
+    {
+      "id": 3,
+      "restaurant_name": "가나다식당",
+      "visitor_count": 2,
+      "timeslot": 2,
+      "date": "2022-05-02"
+    },
+    {
+      "id": 4,
+      "visitor_count": 2,
+      "restaurant_name": "가나다식당",
+      "timeslot": 3,
+      "date": "2022-05-02"
+    }
+  ]
+}

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { format } from 'date-fns';
 import Button from './Button';
-import Toggle from './Toggle';
 import * as FormStyled from './styles/ReservationForm.styled';
 import { Line } from './styles/Reservations.styled';
 import { BtnContainer } from './styles/Reservations.styled';
@@ -16,8 +15,8 @@ const ReservationForm = ({
   initValue,
   setInitValue,
 }) => {
+  console.log(impossibleTime);
   const [personnel, setPersonnel] = useState(1);
-  const [isitOpen, setIsItOpen] = useState({ init: false });
   const [time, setTime] = useState('');
   const params = useParams();
   const result = format(dates, 'yyyy-MM-dd');
@@ -34,7 +33,7 @@ const ReservationForm = ({
       setPersonnel(prve => (prve += 1));
       setInitValue(prve => ({ ...prve, visitor_count: personnel }));
     }
-    if (id === 'minus' && personnel > 0) {
+    if (id === 'minus' && personnel > 1) {
       setPersonnel(prve => (prve -= 1));
       setInitValue(prve => ({ ...prve, visitor_count: personnel }));
     } else if (personnel === 0) {
@@ -50,10 +49,10 @@ const ReservationForm = ({
       initValue.date !== null
     ) {
       checkDate();
-      fetch(`https://jsonplaceholder.typicode.com/posts`, {
+      fetch(`http://10.58.2.211:8000/reservations`, {
         method: 'post',
         headers: {
-          'Content-type': 'application/json; charset=UTF-8',
+          Authorization: localStorage.getItem('token'),
         },
 
         body: JSON.stringify({
@@ -63,9 +62,13 @@ const ReservationForm = ({
           date: initValue.date,
         }),
       })
-        .then(response => response.json())
-        .catch(error => {
-          alert(`${error}가발생했습니다`);
+        .then(response => {
+          return response.json();
+        })
+        .then(item => {
+          if (item.message === 'USER_HAS_ANOTHER_RESERVATION') {
+            alert('앗 이미 이날짜를 예약하셨어요!');
+          }
         });
     } else alert('시간과 인원을 모두 작성해주세요');
   };
@@ -86,13 +89,8 @@ const ReservationForm = ({
       </FormStyled.SectionWapper>
       <Line />
       <form onSubmit={e => handleSubmit(e)}>
-        <Toggle
-          text="시간"
-          id="time"
-          setIsItOpen={setIsItOpen}
-          isitOpen={isitOpen}
-        />
-        {isitOpen.time && (
+        <FormStyled.SectionWapper>
+          <div>시간</div>
           <BtnContainer>
             {impossibleTime &&
               [1, 2, 3, 4, 5].map(items => {
@@ -109,15 +107,10 @@ const ReservationForm = ({
                 );
               })}
           </BtnContainer>
-        )}
+        </FormStyled.SectionWapper>
         <Line />
-        <Toggle
-          text="인원"
-          id="count"
-          setIsItOpen={setIsItOpen}
-          isitOpen={isitOpen}
-        />
-        {isitOpen.count && (
+        <FormStyled.SectionWapper>
+          <div>인원</div>
           <FormStyled.SeatsContainer>
             <FormStyled.PlusMinusBtn
               className="plueMinus"
@@ -143,10 +136,12 @@ const ReservationForm = ({
               -
             </FormStyled.PlusMinusBtn>
           </FormStyled.SeatsContainer>
-        )}
+        </FormStyled.SectionWapper>
         <Line />
         <FormStyled.BtnDiv>
-          <FormStyled.Btn>예약하기</FormStyled.Btn>
+          <FormStyled.Btn>
+            <i className="fa-solid fa-utensils" />
+          </FormStyled.Btn>
         </FormStyled.BtnDiv>
       </form>
     </FormStyled.ReservationFormDiv>

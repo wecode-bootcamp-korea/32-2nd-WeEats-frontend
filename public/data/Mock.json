@@ -1,11 +1,10 @@
 [
   {
-    "restorants_id": 1,
-    "thumbnail_image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cmVzdGF1cmFudHxlbnwwfHwwfHw%3D&w=1000&q=80",
-    "name": "가나다식당",
-    "address": "서울시 강남구 어쩌구동",
-    "date": ["2022-05-13", "2022-05-18", "2022-05-22"],
-    "start_time": "09:00",
-    "end_time": "18:00"
+    "user_id": 123123,
+    "user_info": {
+      "img": "",
+      "e-mail": "asdas@naver.com",
+      "name": "디디"
+    }
   }
 ]

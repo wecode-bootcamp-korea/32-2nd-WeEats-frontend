@@ -1,14 +1,13 @@
 import * as StoreInfoStyled from './styles/StoreInfo.styled';
 
 const StoreInfo = ({ restaurantInfo }) => {
-  const { name, start_time, end_time } = restaurantInfo;
+  const { name, open_time, close_time, thumbnail_image, detail_image } =
+    restaurantInfo;
+
   return (
     <>
       <StoreInfoStyled.StoreImg>
-        <img
-          alt={name}
-          src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1-ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cmVzdGF1cmFudHxlbnwwfHwwfHw%3D&w=1000&q=80"
-        />
+        <img alt={name} src={thumbnail_image} />
       </StoreInfoStyled.StoreImg>
       <StoreInfoStyled.StoreText>
         <StoreInfoStyled.StoreContact>
@@ -19,12 +18,13 @@ const StoreInfo = ({ restaurantInfo }) => {
         </StoreInfoStyled.StoreContact>
         <StoreInfoStyled.Line />
         <StoreInfoStyled.OpenAndClose>
-          <span>open:{start_time}</span>
-          <span>close:{end_time}</span>
+          <span>open:{open_time}</span>
+          <span>close:{close_time}</span>
         </StoreInfoStyled.OpenAndClose>
         <StoreInfoStyled.Line />
         <StoreInfoStyled.MoreInfo>
           <h1>상세정보</h1>
+          <img src={detail_image} />
         </StoreInfoStyled.MoreInfo>
       </StoreInfoStyled.StoreText>
     </>
