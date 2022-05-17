@@ -1,0 +1,24 @@
+import React, { useEffect } from 'react';
+const { kakao } = window;
+
+const Maps = ({ latitude, longitude }) => {
+  useEffect(() => {
+    const mapContainer = document.getElementById('map'),
+      mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667),
+        level: 3,
+      };
+
+    const map = new kakao.maps.Map(mapContainer, mapOption);
+
+    let marker = new kakao.maps.Marker({
+      position: new kakao.maps.LatLng(33.450701, 126.570667),
+    });
+
+    marker.setMap(map);
+  }, []);
+
+  return <div id="map" style={{ width: '300px', height: '300px' }} />;
+};
+
+export default Maps;
