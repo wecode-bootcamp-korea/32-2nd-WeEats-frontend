@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-export const FooterContainer = styled.div`
+export const FooterContainer = styled.footer`
   display: block;
   max-width: 1256px;
   margin: 0 auto;

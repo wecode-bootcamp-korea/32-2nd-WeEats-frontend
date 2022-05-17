@@ -29,7 +29,7 @@ function OAuth() {
         .then(res => res.json())
         .then(res => {
           localStorage.setItem('token', res.access_token);
-          navigate('/main');
+          navigate('/');
         });
   }, [token, navigate]);
 

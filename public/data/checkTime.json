@@ -1,0 +1,15 @@
+[
+  {
+    "timeslot": 1,
+    "remaining_seats": 4
+  },
+
+  {
+    "timeslot": 4,
+    "remaining_seats": 4
+  },
+  {
+    "timeslot": 2,
+    "remaining_seats": 2
+  }
+]
