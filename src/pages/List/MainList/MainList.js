@@ -1,6 +1,27 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Restaurant from './Restaurant';
+
+function MainList({ restaurants }) {
+  const navigate = useNavigate();
+  const handleRestaurantDetail = () => {
+    navigate(`/book/${restaurants.id}`);
+  };
+  return (
+    <StyledMainList>
+      {restaurants.map((restaurant, idx) => {
+        return (
+          <Restaurant
+            key={idx}
+            restaurant={restaurant}
+            handleRestaurantDetail={handleRestaurantDetail}
+          />
+        );
+      })}
+    </StyledMainList>
+  );
+}
 
 const StyledMainList = styled.div`
   display: flex;
@@ -10,15 +31,5 @@ const StyledMainList = styled.div`
   width: 100%;
   border: none;
 `;
-
-function MainList({ restaurants }) {
-  return (
-    <StyledMainList>
-      {restaurants.map((restaurant, index) => {
-        return <Restaurant key={index} restaurant={restaurant} />;
-      })}
-    </StyledMainList>
-  );
-}
 
 export default MainList;

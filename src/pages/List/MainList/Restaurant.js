@@ -27,6 +27,7 @@ const StyledRestaurantImg = styled.img`
   height: 200px;
   border-radius: 20px;
   object-fit: cover;
+  cursor: pointer;
 `;
 
 const StyledRestaurantInfoName = styled.p`

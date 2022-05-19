@@ -18,21 +18,23 @@ const BottomList = [
 const Footer = () => {
   return (
     <footer.FooterContainer>
-      <footer.FooterTop>
-        <footer.FooterTopInfo>
-          <span>고객센터</span>
-          <strong>1600-0123</strong>
-          <span>평일 09:00 ~ 18:00 (주말 & 공휴일 제외)</span>
-        </footer.FooterTopInfo>
-      </footer.FooterTop>
-      <footer.InfoList>
-        {BottomList.map(list => {
-          return <li key={list.id}>{list.info}</li>;
-        })}
-      </footer.InfoList>
-      <footer.CopyRight>
-        Copyright 2022. WeEats, Co, Ltd, All rights reserved
-      </footer.CopyRight>
+      <footer.FooterWrapper>
+        <footer.FooterTop>
+          <footer.FooterTopInfo>
+            <span>고객센터</span>
+            <strong>1600-0123</strong>
+            <span>평일 09:00 ~ 18:00 (주말 & 공휴일 제외)</span>
+          </footer.FooterTopInfo>
+        </footer.FooterTop>
+        <footer.InfoList>
+          {BottomList.map(list => {
+            return <li key={list.id}>{list.info}</li>;
+          })}
+        </footer.InfoList>
+        <footer.CopyRight>
+          Copyright 2022. WeEats, Co, Ltd, All rights reserved
+        </footer.CopyRight>
+      </footer.FooterWrapper>
     </footer.FooterContainer>
   );
 };

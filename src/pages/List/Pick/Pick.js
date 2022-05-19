@@ -4,16 +4,10 @@ import Slider from 'react-slick';
 import BestRestaurant from './BestRestaurant';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
-const StyledArrow = styled.button`
-  &::before {
-    content: '${props => props.arrow}';
-    color: black;
-    font-size: 30px;
-  }
-`;
+import { useNavigate } from 'react-router-dom';
 
 function Pick({ restaurants }) {
+  const navigate = useNavigate();
   const settings = {
     autoplay: true,
     autoplaySpeed: 3000,
@@ -24,15 +18,32 @@ function Pick({ restaurants }) {
     nextArrow: <StyledArrow arrow=">" />,
     prevArrow: <StyledArrow arrow="<" />,
   };
+
   return (
     <div>
       <Slider {...settings}>
-        {restaurants.map((restaurant, index) => {
-          return <BestRestaurant key={index} restaurant={restaurant} />;
+        {restaurants.map(restaurant => {
+          const handleRestaurantDetail = () => {
+            navigate(`/book/${restaurant.id}`);
+          };
+          return (
+            <BestRestaurant
+              key={restaurant.id}
+              restaurant={restaurant}
+              onClick={handleRestaurantDetail}
+            />
+          );
         })}
       </Slider>
     </div>
   );
 }
+const StyledArrow = styled.button`
+  &::before {
+    content: '${props => props.arrow}';
+    color: black;
+    font-size: 30px;
+  }
+`;
 
 export default Pick;

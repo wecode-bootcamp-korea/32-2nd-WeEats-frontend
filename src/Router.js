@@ -14,7 +14,6 @@ const Router = () => {
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/login" element={<Login />} />
         <Route path="/list" element={<List />} />
         <Route path="/" element={<Main />} />
         <Route path="/oauth/kakao" element={<OAuth />} />

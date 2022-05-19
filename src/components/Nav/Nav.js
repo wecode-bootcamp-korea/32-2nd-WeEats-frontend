@@ -40,7 +40,7 @@ const Nav = () => {
   return (
     <S.NavWrapper>
       <S.NavContainer>
-        <S.WeEatsLogoImg to="/" onClick={token || handleIsModalOn} />
+        <S.WeEatsLogoImg to="/" onClick={handleIsModalOn} />
         <S.NavMenu>
           <h2 onClick={goToCategoryHandler}>예약하기</h2>
         </S.NavMenu>
