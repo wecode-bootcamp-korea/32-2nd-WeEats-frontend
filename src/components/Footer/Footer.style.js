@@ -1,11 +1,19 @@
 import styled from 'styled-components';
-export const FooterContainer = styled.footer`
-  display: block;
-  max-width: 1256px;
-  margin: 0 auto;
-  padding: 30px 40px 40px;
+
+export const FooterContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 5px 30px 30px;
+  background-color: #fafafa;
 `;
 
+export const FooterWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 1000;
+`;
 export const FooterTop = styled.div`
   display: flex;
   justify-content: space-between;

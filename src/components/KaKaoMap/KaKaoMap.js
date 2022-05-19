@@ -1,43 +1,53 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { MAP_API_KEY } from '../../auth';
 
 const { kakao } = window;
 
-// To-Do
-// 소셜로그인 머지되면
-// API키 .env파일로 옮기기
-const api = '6279564769636b73313231664a507774';
-
-function KaKaoMap() {
+const KaKaoMap = ({ restaurants, currentMenuId }) => {
   const [shopInfo, setShopInfo] = useState([]);
-  useEffect(() => {
-    fetch(
-      `http://openapi.seoul.go.kr:8088/${api}/json/CrtfcUpsoInfo/1/1000/
-      `,
-      {
-        headers: {
-          Accept: 'application/json',
-        },
-      }
-    )
-      .then(res => res.json())
-      .then(res => {
-        const seoulFoodStore = res.CrtfcUpsoInfo.row.map(result => {
-          return {
-            title: result.UPSO_NM,
-            latlng: new kakao.maps.LatLng(
-              parseFloat(result.Y_DNTS),
-              parseFloat(result.X_CNTS)
-            ),
-            address: result.RDN_CODE_NM,
-            category: result.BIZCND_CODE_NM,
-            tellNo: result.TEL_NO,
-          };
-        });
 
-        setShopInfo(seoulFoodStore);
-      });
-  }, []);
+  useEffect(() => {
+    currentMenuId === 0 &&
+      fetch(
+        `http://openapi.seoul.go.kr:8088/${MAP_API_KEY}/json/CrtfcUpsoInfo/1/1000/`,
+        {
+          headers: {
+            Accept: 'application/json',
+          },
+        }
+      )
+        .then(res => res.json())
+        .then(res => {
+          const seoulFoodStore = res.CrtfcUpsoInfo.row.map(result => {
+            return {
+              title: result.UPSO_NM,
+              latlng: new kakao.maps.LatLng(
+                parseFloat(result.Y_DNTS),
+                parseFloat(result.X_CNTS)
+              ),
+              address: result.RDN_CODE_NM,
+              category: result.BIZCND_CODE_NM,
+              tellNo: result.TEL_NO,
+            };
+          });
+
+          setShopInfo(seoulFoodStore);
+        });
+  }, [restaurants]);
+
+  useEffect(() => {
+    const storeInfoList = restaurants.map(data => {
+      return {
+        title: data.name,
+        latlng: new kakao.maps.LatLng(data.latitude, data.longitude),
+        address: data.address,
+        openTime: data.open_time,
+        closeTime: data.cloase_time,
+      };
+    });
+    currentMenuId > 0 && setShopInfo(storeInfoList);
+  }, [restaurants]);
 
   useEffect(() => {
     const container = document.getElementById('map');
@@ -100,7 +110,7 @@ function KaKaoMap() {
   }, [shopInfo]);
 
   return <KakaoMapDiv />;
-}
+};
 export default KaKaoMap;
 
 const KakaoMapDiv = styled.div.attrs({
@@ -109,6 +119,7 @@ const KakaoMapDiv = styled.div.attrs({
   width: 800px;
   height: 400px;
   margin: 0 auto;
+  bottom: 30px;
   border: 1px solid black;
   border-radius: 30px;
 `;

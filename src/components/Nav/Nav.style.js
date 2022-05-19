@@ -7,7 +7,7 @@ export const NavWrapper = styled.header`
   height: 81px;
   border-bottom: 1px solid ${({ theme }) => theme.fontColor};
   background: ${({ theme }) => theme.backgroundColor};
-  z-index: 100;
+  z-index: 1000;
 `;
 
 export const NavContainer = styled.div`
@@ -18,12 +18,11 @@ export const NavContainer = styled.div`
 `;
 
 export const WeEatsLogoImg = styled(Link)`
-  background-image: url('/images/common/weEatsLogo.png');
-  background-size: cover;
+  background-image: url('/images/common/weEats.png');
   display: flex;
-  width: 70px;
-  height: 50px;
-  transform: translateY(-2px);
+  width: 200px;
+  height: 60px;
+  transform: translate(-50px, -2px);
   cursor: pointer;
 `;
 

@@ -17,9 +17,11 @@ const StyledBlock = styled.div`
 
 const StyledImg = styled.div`
   background-image: url(${props => props.thumbnail_image});
+  background-size: cover;
   width: 100%;
   height: 150px;
   border-radius: 20px;
+  cursor: pointer;
 `;
 
 const StyledInfoName = styled.p`
