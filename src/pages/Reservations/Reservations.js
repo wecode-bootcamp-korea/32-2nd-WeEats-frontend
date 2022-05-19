@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { format } from 'date-fns';
-
 import ReservationCalendar from './ReservationCalendar';
 import StoreInfo from './StoreInfo';
 import Maps from './Maps';
 import ReservationForm from './ReservationForm';
 import * as ReservationStyled from './styles/Reservations.styled';
+import { useParams } from 'react-router-dom';
 
 const Reservations = () => {
   const initSeat = [
@@ -34,10 +34,8 @@ const Reservations = () => {
 
   const [restaurantInfo, setRestaurantInfo] = useState([]);
   const [impossibleTime, setImpossibleTime] = useState([]);
-  //date를 아얘 비워 놓는 방법으로
-  //date 디폴트 값 설정: useForm이용 해주는 방향
-  // 그러면 useForm 없이는?
   const [date, setDate] = useState(new Date('2022-06-01'));
+  const params = useParams();
   const result = format(date, 'yyyy-MM-dd');
 
   const [initValue, setInitValue] = useState({
@@ -50,7 +48,6 @@ const Reservations = () => {
   });
 
   const makeMap = items => {
-    console.log(items);
     if (items) {
       const newMap = new Map(
         initSeat.map(item => [item.timeslot, item.remaining_seats])
@@ -72,14 +69,17 @@ const Reservations = () => {
   };
 
   useEffect(() => {
-    fetch('http://10.58.2.211:8000/restaurants/1', {})
+    fetch(`http://10.58.2.211:8000/restaurants/${params.id}`)
       .then(re => re.json())
       .then(data => setRestaurantInfo(...data.restaurant_detail));
   }, []);
+
   console.log(restaurantInfo);
 
   useEffect(() => {
-    fetch(`http://10.58.2.211:8000/reservations?restaurant_id=2&date=${result}`)
+    fetch(
+      `http://10.58.2.211:8000/reservations?restaurant_id=${params.id}&date=${result}`
+    )
       .then(re => re.json())
       .then(data => makeMap(data.available_seats_list))
       .catch(e => {
@@ -88,33 +88,48 @@ const Reservations = () => {
   }, [date]);
 
   return (
-    <ReservationStyled.Article>
-      <ReservationStyled.StoreInfoSection>
-        <StoreInfo restaurantInfo={restaurantInfo} />
-      </ReservationStyled.StoreInfoSection>
-      <ReservationStyled.ReservationSection>
-        <ReservationCalendar
-          dates={date}
-          setDate={setDate}
-          restaurantInfo={restaurantInfo}
-          initValue={initValue}
-          setInitValue={setInitValue}
-        />
-        <ReservationStyled.Line />
-        {impossibleTime.length !== 0 && (
-          <ReservationForm
+    <ReservationStyled.FullArticle>
+      <ReservationStyled.TopDiv>
+        <ReservationStyled.TopNav>
+          <a herf="/list">
+            <ReservationStyled.NavText>
+              {restaurantInfo.name}
+            </ReservationStyled.NavText>
+          </a>
+          <ReservationStyled.NavText>
+            <i className="fa-solid fa-chevron-right" />
+          </ReservationStyled.NavText>
+          <ReservationStyled.NavText>예약하기</ReservationStyled.NavText>
+        </ReservationStyled.TopNav>
+      </ReservationStyled.TopDiv>
+      <ReservationStyled.Article>
+        <ReservationStyled.StoreInfoSection>
+          <StoreInfo restaurantInfo={restaurantInfo} />
+        </ReservationStyled.StoreInfoSection>
+        <ReservationStyled.ReservationSection>
+          <ReservationCalendar
             dates={date}
-            impossibleTime={impossibleTime}
+            setDate={setDate}
+            restaurantInfo={restaurantInfo}
             initValue={initValue}
             setInitValue={setInitValue}
           />
-        )}
-        <Maps
-          latitude={restaurantInfo.latitude}
-          longitude={restaurantInfo.longitude}
-        />
-      </ReservationStyled.ReservationSection>
-    </ReservationStyled.Article>
+          <ReservationStyled.Line />
+          {impossibleTime.length !== 0 && (
+            <ReservationForm
+              dates={date}
+              impossibleTime={impossibleTime}
+              initValue={initValue}
+              setInitValue={setInitValue}
+            />
+          )}
+          <Maps
+            latitude={restaurantInfo.latitude}
+            longitude={restaurantInfo.longitude}
+          />
+        </ReservationStyled.ReservationSection>
+      </ReservationStyled.Article>
+    </ReservationStyled.FullArticle>
   );
 };
 

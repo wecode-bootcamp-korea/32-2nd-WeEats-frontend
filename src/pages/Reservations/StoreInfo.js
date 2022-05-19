@@ -12,14 +12,12 @@ const StoreInfo = ({ restaurantInfo }) => {
       <StoreInfoStyled.StoreText>
         <StoreInfoStyled.StoreContact>
           <h1>{name}</h1>
-          <StoreInfoStyled.TellBtn>
-            <i className="fa-solid fa-phone" />
-          </StoreInfoStyled.TellBtn>
         </StoreInfoStyled.StoreContact>
         <StoreInfoStyled.Line />
         <StoreInfoStyled.OpenAndClose>
-          <span>open:{open_time}</span>
-          <span>close:{close_time}</span>
+          <span>{open_time}</span>
+          <span>~</span>
+          <span>{close_time}</span>
         </StoreInfoStyled.OpenAndClose>
         <StoreInfoStyled.Line />
         <StoreInfoStyled.MoreInfo>

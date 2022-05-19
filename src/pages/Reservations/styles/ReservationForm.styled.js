@@ -10,6 +10,7 @@ export const SectionWapper = styled.section`
   align-items: center;
   justify-content: space-between;
   font-size: 15px;
+  padding: 5px;
   height: 35px;
   width: 100%;
 `;

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { format } from 'date-fns';
 import Button from './Button';
 import * as FormStyled from './styles/ReservationForm.styled';
@@ -15,10 +15,9 @@ const ReservationForm = ({
   initValue,
   setInitValue,
 }) => {
-  console.log(impossibleTime);
+  const navigate = useNavigate();
   const [personnel, setPersonnel] = useState(1);
   const [time, setTime] = useState('');
-  const params = useParams();
   const result = format(dates, 'yyyy-MM-dd');
 
   const userDate = result + `(${DAY[dates.getUTCDay()]})`;
@@ -68,6 +67,10 @@ const ReservationForm = ({
         .then(item => {
           if (item.message === 'USER_HAS_ANOTHER_RESERVATION') {
             alert('앗 이미 이날짜를 예약하셨어요!');
+          } else if (item.message === 'SUCCESS') {
+            if (window.confirm('마이페이지에서 확인해볼까요?')) {
+              navigate('/mypage');
+            } else return;
           }
         });
     } else alert('시간과 인원을 모두 작성해주세요');
@@ -90,7 +93,6 @@ const ReservationForm = ({
       <Line />
       <form onSubmit={e => handleSubmit(e)}>
         <FormStyled.SectionWapper>
-          <div>시간</div>
           <BtnContainer>
             {impossibleTime &&
               [1, 2, 3, 4, 5].map(items => {

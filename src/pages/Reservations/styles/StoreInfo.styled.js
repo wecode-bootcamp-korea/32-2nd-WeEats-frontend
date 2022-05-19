@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StoreImg = styled.div`
+  width: 500px;
   img {
     width: 500px;
     height: 500px;
@@ -37,6 +38,13 @@ export const Line = styled.hr`
 
 export const MoreInfo = styled.div`
   height: 150px;
+
+  img {
+    width: 500px;
+    height: 450px;
+    padding-right: 15px;
+    margin-top: 15px;
+  }
 `;
 export const TellBtn = styled.button`
   margin-left: 5px;

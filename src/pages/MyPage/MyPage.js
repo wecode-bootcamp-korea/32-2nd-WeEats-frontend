@@ -20,20 +20,22 @@ const MyPage = () => {
   }, []);
 
   return (
-    <MypageStyled.BigArticle>
-      {userData.length !== 0 ? (
+    userData && (
+      <MypageStyled.BigArticle>
         <MypageStyled.ContentSection>
           <MypageStyled.Section id="first">
-            <UserInfo userData={userData && userData} />
+            <UserInfo userData={userData} />
           </MypageStyled.Section>
-          <MypageStyled.Section>
-            <ReservationInfoList />
-          </MypageStyled.Section>
+          {userData && userData.length !== 0 ? (
+            <MypageStyled.Section>
+              <ReservationInfoList />
+            </MypageStyled.Section>
+          ) : (
+            <GoList />
+          )}
         </MypageStyled.ContentSection>
-      ) : (
-        <GoList />
-      )}
-    </MypageStyled.BigArticle>
+      </MypageStyled.BigArticle>
+    )
   );
 };
 

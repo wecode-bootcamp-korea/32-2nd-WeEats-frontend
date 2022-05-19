@@ -39,10 +39,6 @@ const ReservationCalendar = ({
       />
       <CalendarStyled.ColoredBox>
         <CalendarStyled.DisabledDate>
-          <CalendarStyled.BoxColored id="disable" />
-          <span>불가</span>
-        </CalendarStyled.DisabledDate>
-        <CalendarStyled.DisabledDate>
           <CalendarStyled.BoxColored />
           <span>선택</span>
         </CalendarStyled.DisabledDate>

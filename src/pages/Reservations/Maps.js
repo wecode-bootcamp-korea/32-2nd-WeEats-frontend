@@ -16,7 +16,7 @@ const Maps = ({ latitude, longitude }) => {
     });
 
     marker.setMap(map);
-  }, []);
+  }, [latitude, longitude]);
 
   return <div id="map" style={{ width: '300px', height: '300px' }} />;
 };

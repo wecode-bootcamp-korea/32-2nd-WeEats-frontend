@@ -15,7 +15,7 @@ const RecommendFoodCard = ({ value }) => {
   //머지 후 Link to="/list" 추가
   return (
     <StyledRecommend>
-      <Link className="cardLink" to="">
+      <Link className="cardLink" to={`/book/${value.id}`}>
         <StyledRecommendCard>
           <StyledRecommendCardImg
             alt="restaurant"
